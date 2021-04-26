@@ -1,60 +1,53 @@
 Examples
 ========
 
-To run the examples.
+To run the examples,
+you first need to install the package
+and add the path to the package to your PYTHONPATH environment variable (see the installation page).
 
-1. Install the Python dependencies using pip and virtual environment (recommended).
+Example Scripts
+---------------
 
-   1.1. Create a virtual environment
+There are some usage examples of the workflow-manager package:
 
-      .. code-block:: bash
+*. ``create_project.py``
 
-         python3 -m venv venv/
+   Create a WM project in ``./tmp/test_project/`` and import some mock scripts into the project.
 
-   1.2. Activate the virtual environment
+*. ``run_project.py``
 
-      - Linux
+   Put the scripts of the example project into a queue and run the project.
+   This will also start a process monitor for the project.
+   If it finds pending jobs it runs the job and monitors it for success or failure and
+   updates the database.
 
-         .. code-block:: bash
+*. ``create_and_run.py``
 
-            source venv/bin/activate
+   Create and run a example project.
 
-      - Windows
+*. ``monitor_project.py``
 
-         .. code-block:: bash
+   Monitor the example project status by listing the imported scripts and their status - success or failure.
 
-            venv\Scripts\activate
+*. ``delete_project.py``
 
-   1.3. Update pip
+   Delete the example project
 
-      .. code-block:: bash
+Others
+------
 
-         pip install --upgrade pip
-
-   1.4. Install the dependencies
-
-      .. code-block:: bash
-
-         pip install -r requirements.txt
-
-2. Change directory to examples folder
-
-   .. code-block:: bash
-
-      cd workflow/examples/
-
-3. Run this example script - This will setup the pipeline including the scripts that need to be run.
-4. To see a list of the processes, open a new Python console/terminal, and run
+*. To look at the processes of a given project, type
 
    .. code-block:: python
 
-      import workflow_manager as wm
-      P = wm.Project('test_project')
+      import workflow_manager
+      P = workflow_manager.Project('project_name')
       P.list_processes()
 
-5. To look at a given processes log, type
+*. To look at a given processes log, type
 
    .. code-block:: python
 
-       P.process(process_id).log()
-       where "process_id" is the process id from the P.list_process() function.
+      import workflow_manager
+      P = workflow_manager.Project('project_name')
+      P.process(process_id).log()
