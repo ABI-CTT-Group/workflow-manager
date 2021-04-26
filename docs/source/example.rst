@@ -5,7 +5,7 @@ Example
 
 Here is a full example on how to create a project, add some scripts with
 dependencies, and run a parent script that creates a pipeline of processes.
-For more details, see the ``workflow-manager/examples/`` folder.
+For more details, see `root/examples/ <https://github.com/LIN810116/workflow-manager/tree/main/examples>`_.
 
 .. code-block:: python
 

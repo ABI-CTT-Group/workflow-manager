@@ -3,7 +3,7 @@ Examples
 
 To run the examples,
 you first need to install the package
-and add the path to the package to your PYTHONPATH environment variable (see the installation page).
+and add the path to the package to your PYTHONPATH environment variable (see `root/docs/source/installation.rst <https://github.com/LIN810116/workflow-manager/blob/main/docs/source/installation.rst>`_).
 
 Example Scripts
 ---------------
