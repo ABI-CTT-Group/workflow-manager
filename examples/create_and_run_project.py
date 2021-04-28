@@ -28,6 +28,7 @@ if __name__ == '__main__':
     script = P.script('pretend_import')
     script_input_arguments = {'path': 'data/pretend_data.txt'}
     # script_input_arguments = {'path': 'data/example_dicom.dcm'}
+    # script_input_arguments = {'path': 'data'}
     script.run(script_input_arguments)
 
     wm.project.start_process_monitor(project_name, minutes_alive=1, sleep_time=3, total_cores=8)

@@ -18,7 +18,16 @@ def run(process):
     print("Workspace:")
     print("    path:" + str(workspace.path()))
 
-    status, message = workspace.copy_file(path)
+    if os.path.isdir(path):
+        files = os.listdir(path)
+        paths = list()
+        for file in files:
+            paths.append(os.path.join(path, file))
+        print("list of files:" + str(paths))
+        status, message = workspace.copy_files(paths)
+    else:
+        status, message = workspace.copy_file(path)
+
     process.completed(status, message)
 
 
