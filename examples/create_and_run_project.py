@@ -1,9 +1,7 @@
 import os
 import pymongo
 import shutil
-import sys
 
-sys.path.append('../workflow_manager')
 import workflow_manager as wm
 
 if __name__ == '__main__':
@@ -27,7 +25,7 @@ if __name__ == '__main__':
     P.import_script('scripts/pretend_mechanics2.py')
 
     P = wm.Project(project_name)
-    script = P.script('import')
+    script = P.script('pretend_import')
     script_input_arguments = {'path': 'data/pretend_data.txt'}
     script.run(script_input_arguments)
 

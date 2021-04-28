@@ -4,7 +4,7 @@ if __name__ == '__main__':
     project_name= "test_project"
 
     P = wm.Project(project_name)
-    script = P.script('import')
+    script = P.script('pretend_import')
     script_input_arguments = {'path': 'data/pretend_data.txt'}
     script.run(script_input_arguments)
 
