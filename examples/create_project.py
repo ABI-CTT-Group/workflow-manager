@@ -24,3 +24,4 @@ if __name__ == '__main__':
     P.import_script('scripts/pretend_fit.py')
     P.import_script('scripts/pretend_mechanics1.py')
     P.import_script('scripts/pretend_mechanics2.py')
+    P.import_script('scripts/pretend_send.py')
