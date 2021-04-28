@@ -20,11 +20,7 @@ def run(process):
     fp = dest_workspace.open_file('pointcloud.txt', 'w')
     fp.write(str(10))
     fp.close()
-    if process.id == 7:
-        print('SLEEPING FOR 10s')
-        time.sleep(10)
-    else:
-        time.sleep(3)
+    time.sleep(3)
     process.completed()
 
 
