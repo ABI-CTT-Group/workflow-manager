@@ -21,6 +21,7 @@ Welcome to the Workflow Manager (WM) documentation!
    future
    api
    contributing_to_documentation
+   contributors
    
     
 Indices and tables
