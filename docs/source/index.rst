@@ -20,6 +20,7 @@ Welcome to the Workflow Manager (WM) documentation!
    deployment
    future
    api
+   contributing_to_documentation
    
     
 Indices and tables
