@@ -24,6 +24,7 @@ An example of adding a script to a project,
    script.set_program('python')
    script.set_script('import_scan.py')
 
+.. _Script Dependencies:
 
 Script Dependencies
 -------------------
@@ -84,6 +85,7 @@ script label (‘import_zipped_scan’) and script arguments as inputs. This
 will create a process that executes the script in the project
 environment.
 
+.. _Example Script:
 
 Example Script
 --------------
