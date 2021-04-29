@@ -7,7 +7,7 @@ USER root
 ENV MODULES_DIR /modules
 ENV SCRIPTS /scripts
 ENV PROJECT_NAME wm_project
-ENV PROJECT_ROOT /wm_project
+ENV PROJECT_ROOT /$PROJECT_NAME
 ENV DICOM_NODE /dcmtk/received
 ENV EXAMPLES /examples
 ENV RESULTS /results
@@ -53,5 +53,4 @@ CMD /bin/bash /entrypoint.sh
 #    - test_project
 #    - mongodb
 #    - results
-# 2. sudo docker run -p 8105:8105 -v /path/to/dicom_node/received:/dcmtk -v /path/to/test_project:/test_project -v /path/to/mongodb:/mongodb/data/db -v /path/to/results:/results workflow-manager
-#    E.g. sudo docker run -p 8105:8105 -v /home/clin864/opt/physiome-workflows/workflow-manager_docker_test/dicom_node:/dcmtk -v /home/clin864/opt/physiome-workflows/workflow-manager_docker_test/test_project:/wm_project -v /home/clin864/opt/physiome-workflows/workflow-manager_docker_test/mongodb:/mongodb/data/db -v /home/clin864/opt/physiome-workflows/workflow-manager_docker_test/results:/results workflow-manager
+# 2. sudo docker run -p 8105:8105 -v /path/to/dicom_node:/dcmtk -v /path/to/test_project:/wm_project -v /path/to/mongodb:/mongodb/data/db -v /path/to/results:/results workflow-manager
