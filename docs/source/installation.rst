@@ -1,49 +1,79 @@
+.. _Installation:
+
 Installation
 ============
 
-Clone the GitHub repository:
+Prerequisites
+-------------
+Please install the following system packages
+
+* ``mongodb-server`` - MongoDB is used for data storage.
 
 .. code-block:: bash
 
-   git clone https://github.com/physiome-workflows/workflow-manager.git
+   apt update
+   apt install -y mongodb-server
 
-This is a private repository so you will need a GitHub account and have permissions to the repository.
+Installation steps
+------------------
 
-Once cloned, you need to add the path to the workflow-manager(WM) module to your Python path environment variable. This can be added to your .bashrc file:
-
-.. code-block::
-
-   export PYTHONPATH=$PYTHONPATH:~/path_to_workflow-manager/workflow_manager
-
-Requirements
-------------
-
-Please install the following packages
-
-``pymongo`` - MongoDB is used for data storage.
-
-Using Python virtual environment and the requirements.txt file to install packages is recommended.
-
-#. Create a virtual environment
+#. Clone the GitHub repository:
 
    .. code-block:: bash
 
-      python3 -m venv venv/
+      git clone https://github.com/physiome-workflows/workflow-manager.git
 
-#. Activate the virtual environment
+   .. note::
 
-   .. code-block:: bash
+      This is a private repository so you will need a GitHub account and have permissions to the repository.
 
-      source venv/bin/activate
+#. Add workflow-manager(WM) to Python environment
 
-#. Update pip
+   Once cloned, you need to add the path to the workflow-manager(WM) module to your Python path environment variable.
+   This can be added to your ~/.bashrc file.
 
-   .. code-block:: bash
+   .. code-block::
 
-      pip install --upgrade pip
+      export PYTHONPATH=$PYTHONPATH:~/path_to_workflow-manager/workflow_manager
 
-#. Install the dependencies via requirements.txt
+   .. note::
 
-   .. code-block:: bash
+      Once saved, you can run ``echo $PYTHONPATH`` to see if the path has been added to PYTHONPATH.
+      If not, you might need to reload the .bashrc file by ``source ~/.bashrc`` or open a new terminal session.
 
-      pip install -r requirements.txt
+#. Install Python dependencies
+
+   Using Python virtual environment is recommended.
+   Below shows the steps to install the dependencies from the dependency file requirements.txt into a python virtual environment.
+
+   #. Create a virtual environment
+
+      .. code-block:: bash
+
+         python3 -m venv venv/
+
+   #. Activate the virtual environment
+
+      .. code-block:: bash
+
+         source venv/bin/activate
+
+      .. note::
+
+         To deactivate a virtual environment, run
+
+         .. code-block:: bash
+
+            deactivate
+
+   #. Update pip
+
+      .. code-block:: bash
+
+         pip install --upgrade pip
+
+   #. Install the dependencies via requirements.txt
+
+      .. code-block:: bash
+
+         pip install -r requirements.txt
