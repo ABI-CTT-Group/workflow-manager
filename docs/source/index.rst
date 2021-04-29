@@ -16,7 +16,7 @@ Welcome to the Workflow Manager (WM) documentation!
    script
    process
    workspace
-   example
+   examples
    future
    api
    
