@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     P = wm.Project(project_name)
     script = P.script('pretend_import')
-    script_input_arguments = {'path': 'data/pretend_data.txt'}
+    script_input_arguments = {'path': 'data/pretend_data.txt', 'send_dir': os.path.join(P.root_dir, 'results')}
     # script_input_arguments = {'path': 'data/example_dicom.dcm'}
     # script_input_arguments = {'path': 'data'}
     script.run(script_input_arguments)
