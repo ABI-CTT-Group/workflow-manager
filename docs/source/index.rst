@@ -17,6 +17,7 @@ Welcome to the Workflow Manager (WM) documentation!
    process
    workspace
    examples
+   deployment
    future
    api
    
