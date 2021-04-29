@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  workflow-manager:
+    image: workflow-manager
+    restart: always
+    ports:
+      - "8105:8105"
+    volumes:
+      - dicom_node:/dcmtk/received
+      - project:/wm_project
+      - mongodb:/mongodb/data/db
+      - results:/results
+
+volumes:
+  dicom_node:
+  project:
+  mongodb:
+  results:
+
+# Start all images: sudo docker-compose up
+# Stop all images: sudo docker-compose stop
