@@ -3,6 +3,10 @@
 Installation
 ============
 
+This page shows how to install the workflow-manager as a Python package in your python environment.
+Once installed, you can use import it by adding ``import workflow_manager`` in your code.
+
+
 Prerequisites
 -------------
 Please install the following system packages
