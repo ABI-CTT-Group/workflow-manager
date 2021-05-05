@@ -12,10 +12,7 @@ Welcome to the Workflow Manager (WM) documentation!
 
    introduction
    installation
-   project
-   script
-   process
-   workspace
+   workflow_components/index
    examples
    deployment
    future
