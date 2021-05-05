@@ -17,6 +17,7 @@ Welcome to the Workflow Manager (WM) documentation!
    deployment
    future
    api
+   unit_testing
    contributing_to_documentation
    contributors
    
