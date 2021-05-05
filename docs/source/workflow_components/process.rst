@@ -1,8 +1,6 @@
 Processes
 =========
 
-.. module:: workflow_manager
-
 A process is the execution of a script. This typically creates workspaces
 and generates new data.
 
