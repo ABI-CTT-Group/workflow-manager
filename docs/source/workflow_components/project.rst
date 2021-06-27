@@ -1,8 +1,6 @@
 Projects
 ========
 
-.. module:: workflow_manager
-
 Projects, the top level object in workflow_manager(WM), holds all the scripts, processes,
 and workspace data.
 
@@ -20,9 +18,6 @@ A new project can be created by
 This call will assume the MongoDB is installed on the local machine and
 use the default MongoDB port. If a remote database or different port is
 used then this can be defined using the keyword arguments.
-
-.. automodule:: workflow_manager
-   :members: create_project
 
 
 Retrieving a Project

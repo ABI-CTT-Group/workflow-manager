@@ -1,8 +1,6 @@
 Workspaces
 ==========
 
-.. module:: workflow_manager
-
 Workspaces stores files and data.
 
 To create a new workspace:

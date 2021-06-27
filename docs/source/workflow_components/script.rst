@@ -1,8 +1,6 @@
 Scripts
 =======
 
-.. module:: workflow_manager
-
 A script is a description of how to process data. Scripts can depend on
 other scripts which create pipelines of processes.
 

@@ -12,14 +12,12 @@ Welcome to the Workflow Manager (WM) documentation!
 
    introduction
    installation
-   project
-   script
-   process
-   workspace
+   workflow_components/index
    examples
    deployment
    future
    api
+   unit_testing
    contributing_to_documentation
    contributors
    

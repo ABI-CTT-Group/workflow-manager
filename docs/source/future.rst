@@ -1,8 +1,6 @@
 Future
 ======
 
-.. module:: workflow_manager
-
 How do you manage data and the processing of data in a structured yet
 flexible way? Currently, the typical way is to store data on user
 filesystems in ad hoc directory structures and process them manually.
