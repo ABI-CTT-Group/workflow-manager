@@ -11,10 +11,10 @@ Welcome to the Workflow Manager (WM) documentation!
    :maxdepth: 2
 
    introduction
-   installation
    workflow_components/index
    examples
-   deployment
+   installation
+   container_based_deployment
    future
    api
    unit_testing
