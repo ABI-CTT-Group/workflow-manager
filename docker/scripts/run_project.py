@@ -14,4 +14,4 @@ if __name__ == '__main__':
     script_input_arguments = {'path': path, 'send_dir': os.getenv('RESULTS')}
     script.run(script_input_arguments)
 
-    start_process_monitor(project_name, 3, 3, 8)
+    start_process_monitor(project_name, 999, 3, 8)
