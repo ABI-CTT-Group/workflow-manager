@@ -1,5 +1,5 @@
-Unit testing
-============
+Testing
+=======
 
 ``Pytest`` is the test framework adopted in this project.
 All the tests can be found in the ``tests/`` folder.
