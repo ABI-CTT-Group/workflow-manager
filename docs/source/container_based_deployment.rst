@@ -54,7 +54,10 @@ Build the docker image from ``Dockerfile`` in ``/path/to/workflow-manager/docker
 2. Run the docker image
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-* Run the example workflow
+Run the example workflow
+````````````````````````
+
+#. Run the docker image:
 
    .. code-block:: bash
 
@@ -67,78 +70,79 @@ Build the docker image from ``Dockerfile`` in ``/path/to/workflow-manager/docker
       We can also map a folder inside a container to a local folder by adding a -v (or --volume ) argument to the run command.
       For example, ``sudo docker run -it -e RUN_EXAMPLES=TRUE -v /path/to/results:/results workflow-manager``
 
-   #. Stop the container. See :ref:`Stop a docker container`
+#. Stop the container. See :ref:`Stop a docker container`
 
-* Run a custom workflow
+Run a custom workflow
+`````````````````````
 
-   This docker image also allow you to run yor own workflow by passing the scripts, data and any resource the workflow will be using into the docker container.
+This docker image also allow you to run yor own workflow by passing the scripts, data and any resource the workflow will be using into the docker container.
 
-   #. Create a ``resources`` folder locally and put all the input resources inside the folder.
-      For example, you can create the following sub-folders to store your your resources.
+#. Create a ``resources`` folder locally and put all the input resources inside the folder.
+   For example, you can create the following sub-folders to store your your resources.
 
-      * ``./scripts``: folder which contains your custom scripts.
-                       Note that the scripts need to be converted/written in the format that the the workflow-manager supports.
-                       Please see this :ref:`Example Script` for reference.
-      * ``./data``: folder where you put the input data
+   * ``./scripts``: folder which contains your custom scripts.
+                    Note that the scripts need to be converted/written in the format that the the workflow-manager supports.
+                    Please see this :ref:`Example Script` for reference.
+   * ``./data``: folder where you put the input data
 
-   #. Create a script ``project_setup.py`` to set up the workflow project and put it inside the resources folder.
-      Below is an example of the setup script.
+#. Create a script ``project_setup.py`` to set up the workflow project and put it inside the resources folder.
+   Below is an example of the setup script.
 
-      .. code-block:: python
+   .. code-block:: python
 
-         import os
+      import os
 
-         import workflow_manager as wm
+      import workflow_manager as wm
 
-         if __name__ == '__main__':
-            project_name = sys.argv[1]
-            project_root = sys.argv[2]
+      if __name__ == '__main__':
+          project_name = sys.argv[1]
+          project_root = sys.argv[2]
 
-            os.makedirs(root)
-            P = wm.create_project(project_name, root_dir=root)
+          os.makedirs(root)
+          P = wm.create_project(project_name, root_dir=root)
 
-            P.import_script('./scripts/script1.py')
-            P.import_script('./scripts/script2.py')
-            P.import_script('./scripts/script3.py')
+          P.import_script('./scripts/script1.py')
+          P.import_script('./scripts/script2.py')
+          P.import_script('./scripts/script3.py')
 
-            script = P.script('script1')
-            script_input_arguments = {'path': 'relativePathToInputData/pretend_data.txt', 'send_dir': os.getenv('RESULTS')}
-            script.run(script_input_arguments)
+          script = P.script('script1')
+          script_input_arguments = {'path': 'relativePathToInputData/pretend_data.txt', 'send_dir': os.getenv('RESULTS')}
+          script.run(script_input_arguments)
 
-            wm.project.start_process_monitor(project_name, minutes_alive=999, sleep_time=3, total_cores=8)
+          wm.project.start_process_monitor(project_name, minutes_alive=999, sleep_time=3, total_cores=8)
 
-   #. (optional) Create a python dependency `requirements.txt` file in the root of the resources folder.
-      All Python dependencies listed in ``requirements.txt`` will be automatically installed.
+#. (optional) Create a python dependency `requirements.txt` file in the root of the resources folder.
+   All Python dependencies listed in ``requirements.txt`` will be automatically installed.
 
-   #. (optional) Create the following folders to save the project, database and results locally.
-      In the next step, we will do folder mapping between local folders and the folders inside the container.
-      Otherwise, you will lose all the data once the container is terminated.
+#. (optional) Create the following folders to save the project, database and results locally.
+   In the next step, we will do folder mapping between local folders and the folders inside the container.
+   Otherwise, you will lose all the data once the container is terminated.
 
-      * project_folder/
-      * database_folder/
-      * result_folder/
+   * project_folder/
+   * database_folder/
+   * result_folder/
 
-   #. Run the docker image
+#. Run the docker image
 
-      .. code-block:: bash
+   .. code-block:: bash
 
-         sudo docker run -v /path/to/resources:/resource -v /path/to/project_folder:/wm_project -v /path/to/database_folder:/mongodb/data/db -v /path/to/results:/results workflow-manager
+      sudo docker run -v /path/to/resources:/resource -v /path/to/project_folder:/wm_project -v /path/to/database_folder:/mongodb/data/db -v /path/to/results:/results workflow-manager
 
 
-      .. note::
+   .. note::
 
-         In the custom workflow, the final results will not automatically sent to the results folder.
-         The results by default will just be save in the project workspace(s) depanding on how you set up your workflow.
-         E.g ``/wm_project/workspaces/0003``
-         You can either A. Map your local results folder to a final workspace
-         or B. Send all the results from the project workspace(s) to the ``/results`` folder inside docker, then do a mapping between the local results folder and the results folder inside docker.
+      In the custom workflow, the final results will not automatically sent to the results folder.
+      The results by default will just be save in the project workspace(s) depanding on how you set up your workflow.
+      E.g ``/wm_project/workspaces/0003``
+      You can either A. Map your local results folder to a final workspace
+      or B. Send all the results from the project workspace(s) to the ``/results`` folder inside docker, then do a mapping between the local results folder and the results folder inside docker.
 
-   #. Stop the container. See :ref:`Stop a docker container`
+#. Stop the container. See :ref:`Stop a docker container`
 
 .. _Stop a docker container:
 
 3. Stop a docker container
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Get container id
 
