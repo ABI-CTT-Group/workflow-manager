@@ -16,7 +16,7 @@ Welcome to the Workflow Manager (WM) documentation!
    examples
    container_based_deployment
    api
-   unit_testing
+   testing
    future
    contributing_to_documentation
    contributors
