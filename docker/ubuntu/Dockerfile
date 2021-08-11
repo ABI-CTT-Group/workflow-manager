@@ -11,6 +11,7 @@ ENV PROJECT_ROOT /$PROJECT_NAME
 ENV DICOM_NODE /dcmtk/received
 ENV EXAMPLES /examples
 ENV RESULTS /results
+ENV RESOURCES /resources
 
 # Make dirs
 RUN mkdir -p $MODULES_DIR
@@ -19,6 +20,7 @@ RUN mkdir -p $PROJECT_ROOT
 RUN mkdir -p $DICOM_NODE
 RUN mkdir -p /mongodb/data/db
 RUN mkdir -p $RESULTS
+RUN mkdir -p $RESOURCES
 
 # Install system packages
 RUN apt update
@@ -54,3 +56,14 @@ CMD /bin/bash /entrypoint.sh
 #    - mongodb
 #    - results
 # 2. sudo docker run -p 8105:8105 -v /path/to/dicom_node:/dcmtk -v /path/to/test_project:/wm_project -v /path/to/mongodb:/mongodb/data/db -v /path/to/results:/results workflow-manager
+
+# Run example pipeline
+# - sudo docker run -it -e MODE=examples workflow-manager
+# OR
+# - sudo docker run -it -e MODE=examples -v /path/to/test_project:/wm_project -v /path/to/mongodb:/mongodb/data/db -v /path/to/results:/results workflow-manager
+# Where:
+#   - The environment variable RUN_EXAMPLES specify whether to run the example pipeline.
+#   - Can also do folder mapping to save data locally (everything in docker will be deleted once the container is deleted). Some important folders in the docker images:
+#       - /wm_project: the project root folder which contains three subfolders: 1. processes 2. scripts 3. workspaces
+#       - /mongodb/data/db: the mongoDB database
+#       - /results: the results folder can be used for storing the workflow results
