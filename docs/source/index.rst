@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the Workflow Manager (WM) documentation!
-===================================================
+Welcome to the Physiome Workflow Manager (WM) documentation!
+============================================================
 
 
 .. toctree::
