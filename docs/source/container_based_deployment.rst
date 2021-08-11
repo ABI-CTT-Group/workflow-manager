@@ -85,6 +85,7 @@ Run a custom workflow
 This docker image also allow you to run yor own workflow by passing the scripts, data and any resource the workflow will be using into the docker container.
 
 #. Create a ``resources`` folder locally and put all the input resources inside the folder.
+   This example resource folder can be used as a starting point.
    For example, you can create the following sub-folders to store those resources.
 
    * ``./scripts``: folder which contains your custom scripts.
@@ -97,6 +98,7 @@ This docker image also allow you to run yor own workflow by passing the scripts,
 
    .. code-block:: python
 
+      import sys
       import os
 
       import workflow_manager as wm
@@ -105,8 +107,8 @@ This docker image also allow you to run yor own workflow by passing the scripts,
           project_name = sys.argv[1]
           project_root = sys.argv[2]
 
-          os.makedirs(root)
-          P = wm.create_project(project_name, root_dir=root)
+          os.makedirs(project_root)
+          P = wm.create_project(project_name, root_dir=project_root)
 
           P.import_script('./scripts/script1.py')
           P.import_script('./scripts/script2.py')
