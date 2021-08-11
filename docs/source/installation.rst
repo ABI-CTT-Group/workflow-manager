@@ -16,7 +16,7 @@ Please install the following system packages
 .. code-block:: bash
 
    apt update
-   apt install -y mongodb-server
+   apt install -y dcmtk python3.6 build-essential python3.6-dev python3-pip mongodb-server python-pymongo python-psutil python-tables
 
 Installation steps
 ------------------
