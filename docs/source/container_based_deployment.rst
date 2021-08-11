@@ -11,10 +11,29 @@ Here is a complete example on how to setup and run a simple workflow via contain
 Docker
 ------
 
-.. _`Build the workflow-manager docker image`:
+.. _`Getting the workflow-manager docker image`:
 
-1. Build the workflow-manager docker image
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. Getting the workflow-manager docker image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can get the docker image of workflow-manager by:
+
+* :ref:`Pulling image from Docker Hub`
+* :ref:`Building image from Dockerfile`
+
+.. _`Pulling image from Docker Hub`:
+
+Pulling image from Docker Hub
+`````````````````````````````
+
+.. code-block:: bash
+
+   sudo docker pull clin864/workflow-manager
+
+.. _`Building image from Dockerfile`:
+
+Building image from Dockerfile
+``````````````````````````````
 
 Build the docker image from ``Dockerfile`` in ``/path/to/workflow-manager/docker/ubuntu``
 
@@ -115,7 +134,7 @@ Build the docker image from ``Dockerfile`` in ``/path/to/workflow-manager/docker
 
 .. _Stop a docker container:
 
-Stop a docker container
+3. Stop a docker container
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Get container id
