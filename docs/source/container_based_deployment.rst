@@ -54,6 +54,11 @@ Build the docker image from ``Dockerfile`` in ``/path/to/workflow-manager/docker
 2. Run the docker image
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+* :ref:`Run the example workflow`
+* :ref:`Run a custom workflow`
+
+.. _`Run the example workflow`:
+
 Run the example workflow
 ````````````````````````
 
@@ -72,13 +77,15 @@ Run the example workflow
 
 #. Stop the container. See :ref:`Stop a docker container`
 
+.. _`Run a custom workflow`:
+
 Run a custom workflow
 `````````````````````
 
 This docker image also allow you to run yor own workflow by passing the scripts, data and any resource the workflow will be using into the docker container.
 
 #. Create a ``resources`` folder locally and put all the input resources inside the folder.
-   For example, you can create the following sub-folders to store your your resources.
+   For example, you can create the following sub-folders to store those resources.
 
    * ``./scripts``: folder which contains your custom scripts.
                     Note that the scripts need to be converted/written in the format that the the workflow-manager supports.
