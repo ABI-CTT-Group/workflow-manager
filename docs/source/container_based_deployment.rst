@@ -84,44 +84,16 @@ Run a custom workflow
 
 This docker image also allow you to run yor own workflow by passing the scripts, data and any resource the workflow will be using into the docker container.
 
-#. Create a ``resources`` folder locally and put all the input resources inside the folder.
-   This example resource folder can be used as a starting point.
-   For example, you can create the following sub-folders to store those resources.
+#. Download and unzip the :download:`resource <./doc_downloads/resources.zip>` folder, and put all the input resources inside the folder.
+   This resources folder contains:
 
-   * ``./scripts``: folder which contains your custom scripts.
-                    Note that the scripts need to be converted/written in the format that the the workflow-manager supports.
-                    Please see this :ref:`Example Script` for reference.
+   * ``./scripts``: folder which contains your custom scripts. Note that the scripts need to be converted/written in the format that the the workflow-manager supports. Please see this :ref:`Example Script` for reference.
    * ``./data``: folder where you put the input data
+   * ``requirements.txt``: list all python dependencies of your scripts in this file
+   * ``project_setup.py``: modify this script to set up your own workflow
 
-#. Create a script ``project_setup.py`` to set up the workflow project and put it inside the resources folder.
-   Below is an example of the setup script.
-
-   .. code-block:: python
-
-      import sys
-      import os
-
-      import workflow_manager as wm
-
-      if __name__ == '__main__':
-          project_name = sys.argv[1]
-          project_root = sys.argv[2]
-
-          os.makedirs(project_root)
-          P = wm.create_project(project_name, root_dir=project_root)
-
-          P.import_script('./scripts/script1.py')
-          P.import_script('./scripts/script2.py')
-          P.import_script('./scripts/script3.py')
-
-          script = P.script('script1')
-          script_input_arguments = {'path': 'relativePathToInputData/pretend_data.txt', 'send_dir': os.getenv('RESULTS')}
-          script.run(script_input_arguments)
-
-          wm.project.start_process_monitor(project_name, minutes_alive=999, sleep_time=3, total_cores=8)
-
-#. (optional) Create a python dependency `requirements.txt` file in the root of the resources folder.
-   All Python dependencies listed in ``requirements.txt`` will be automatically installed.
+      .. literalinclude:: ./doc_downloads/resources/project_setup.py
+         :language: python
 
 #. (optional) Create the following folders to save the project, database and results locally.
    In the next step, we will do folder mapping between local folders and the folders inside the container.
