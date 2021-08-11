@@ -69,9 +69,13 @@ def delete_project_after():
 
 
 def test_pretend_import():
-    # given a project with the pretend_import script imported as the 1st script,
-    # when I run the project with the pretend_data.txt as input,
-    # should see pretend_data.txt passed into the 1st workspace
+    """
+    given a project with the pretend_import script imported as the 1st script,
+    when I run the project with the pretend_data.txt as input,
+    should see pretend_data.txt passed into the 1st workspace
+    :return:
+    :rtype:
+    """
 
     path = os.path.join(pytest.project_root, 'workspaces', '000001', 'pretend_data.txt')
 
@@ -79,9 +83,11 @@ def test_pretend_import():
 
 
 def test_pretend_segment():
-    # given a project with the pretend_segment script imported as the 2nd script (depends on pretend_import),
-    # when I run the project,
-    # should see pointcloud.txt in the 2nd workspace
+    """
+    given a project with the pretend_segment script imported as the 2nd script (depends on pretend_import),
+    when I run the project,
+    should see pointcloud.txt in the 2nd workspace
+    """
 
     path = os.path.join(pytest.project_root, 'workspaces', '000002', 'pointcloud.txt')
 
@@ -89,9 +95,13 @@ def test_pretend_segment():
 
 
 def test_pretend_fit():
-    # given a project with the pretend_fit script imported as the 3rd script (depends on pretend_segment),
-    # when I run the project,
-    # should see mesh.txt in the 3rd workspace
+    """
+    given a project with the pretend_fit script imported as the 3rd script (depends on pretend_segment),
+    when I run the project,
+    should see mesh.txt in the 3rd workspace
+    :return:
+    :rtype:
+    """
 
     path = os.path.join(pytest.project_root, 'workspaces', '000003', 'mesh.txt')
 
@@ -99,10 +109,12 @@ def test_pretend_fit():
 
 
 def test_pretend_mechanics():
-    # given a project with the pretend_mechanics1 and pretend_mechanics2 scripts imported as the 4th and 5th scripts
-    # (both depend on pretend_fit and will be run right after the completion of pretend_fit in a random order),
-    # when I run the project,
-    # should see solution1.txt in the 4th/5th workspace and solution2.txt in the 4th/5th workspace.
+    """
+    given a project with the pretend_mechanics1 and pretend_mechanics2 scripts imported as the 4th and 5th scripts
+    (both depend on pretend_fit and will be run right after the completion of pretend_fit in a random order),
+    when I run the project,
+    should see solution1.txt in the 4th/5th workspace and solution2.txt in the 4th/5th workspace.
+    """
 
     workspace_a_path = os.path.join(pytest.project_root, 'workspaces', '000004')
     workspace_b_path = os.path.join(pytest.project_root, 'workspaces', '000005')
@@ -114,11 +126,13 @@ def test_pretend_mechanics():
 
 
 def test_pretend_send():
-    # given a project with the pretend_send script imported as the 6th script
-    # (depends on pretend_mechanics1 and pretend_mechanics2.
-    # i.e. pretend_send will be executed twice after pretend_mechanics1 and pretend_mechanics2 separately),
-    # when I run the project,
-    # should see solution1.txt and solution2.txt sent to a destination folder
+    """
+    given a project with the pretend_send script imported as the 6th script
+    (depends on pretend_mechanics1 and pretend_mechanics2.
+    i.e. pretend_send will be executed twice after pretend_mechanics1 and pretend_mechanics2 separately),
+    when I run the project,
+    should see solution1.txt and solution2.txt sent to a destination folder
+    """
 
     path_1 = os.path.join(pytest.project_root, 'results', 'solution1.txt')
     path_2 = os.path.join(pytest.project_root, 'results', 'solution2.txt')

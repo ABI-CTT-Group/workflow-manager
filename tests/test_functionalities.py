@@ -43,6 +43,9 @@ def delete_project_after():
 
 
 def test_create_project(delete_project_before, delete_project_after):
+    """
+    Test if a workflow project can be successfully created
+    """
     P = wm.create_project(pytest.project_name, root_dir=pytest.project_root)
 
     assert pytest.project_name in pytest.conn.list_database_names()
@@ -50,9 +53,11 @@ def test_create_project(delete_project_before, delete_project_after):
 
 
 def test_create_existing_project(delete_project_before, delete_project_after):
-    # given a existing project name,
-    # When I try to create an existing project,
-    # should get exception when the project already exists
+    """
+    given a existing project name,
+    When creating an existing project,
+    should raise exception if the project already exists
+    """
 
     wm.create_project(pytest.project_name, root_dir=pytest.project_root)
 
