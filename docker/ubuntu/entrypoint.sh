@@ -17,6 +17,11 @@
 #start mongodb and put it in the background
 mongod --dbpath /mongodb/data/db --smallfiles --fork  --logpath /var/log/mongodb/mongod.log &
 
+if [ -f ${RESOURCES}/requirements.txt ]; then
+    echo "Installing python dependencies..."
+    pip install -r ${RESOURCES}/requirements.txt
+fi
+
 if [[ "${MODE,,}" == "examples" ]]; then
   echo 'Running the example pipeline'
   python3 ${SCRIPTS}/create_project.py ${PROJECT_NAME} ${PROJECT_ROOT} $EXAMPLES/scripts

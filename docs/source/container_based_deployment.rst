@@ -107,6 +107,9 @@ Build the docker image from ``Dockerfile`` in ``/path/to/workflow-manager/docker
 
             wm.project.start_process_monitor(project_name, minutes_alive=999, sleep_time=3, total_cores=8)
 
+   #. (optional) Create a python dependency `requirements.txt` file in the root of the resources folder.
+      All Python dependencies listed in ``requirements.txt`` will be automatically installed.
+
    #. (optional) Create the following folders to save the project, database and results locally.
       In the next step, we will do folder mapping between local folders and the folders inside the container.
       Otherwise, you will lose all the data once the container is terminated.
