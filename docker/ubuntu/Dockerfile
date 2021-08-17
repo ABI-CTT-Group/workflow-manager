@@ -50,6 +50,13 @@ RUN cp -R $MODULES_DIR/workflow_manager /usr/local/lib/python3.6/dist-packages
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install --no-cache-dir -r /requirements.txt
 
+# Copy cron file to the cron.d directory
+COPY ./docker/ubuntu/workflow-manager-cron /etc/cron.d/workflow-manager-cron
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/cron.d/workflow-manager-cron
+# Apply cron job
+RUN crontab /etc/cron.d/workflow-manager-cron
+
 WORKDIR $DICOM_NODE
 CMD /bin/bash /entrypoint.sh
 
