@@ -4,14 +4,14 @@ An open-source software platform for creating and deploying Physiome-driven mode
 
 ## Dependencies
 
-Installing system dependencies
+### Installing system dependencies
 
 ```commandline
 apt update
 apt install -y dcmtk python3.6 build-essential python3.6-dev python3-pip mongodb-server python-pymongo python-psutil python-tables
 ```
 
-Installing Python dependencies
+### Installing Python dependencies
 
 ```commandline
 pip install -r requirements.txt
@@ -21,7 +21,7 @@ See requirements.txt for python dependencies.
 
 ## Accessing documentation
 
-The documentation is hosted on Readthedocs https://workflow-manager.readthedocs.io
+The documentation is hosted on Readthedocs https://physiome-workflow-manager.readthedocs.io
 
 ## Building documentation locally
 
