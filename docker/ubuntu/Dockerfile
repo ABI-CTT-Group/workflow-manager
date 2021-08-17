@@ -23,10 +23,18 @@ RUN mkdir -p $RESULTS
 RUN mkdir -p $RESOURCES
 
 # Install system packages
-RUN apt update
-RUN apt install -y dcmtk
-RUN apt install -y python3.6 build-essential python3.6-dev python3-pip
-RUN apt install -y mongodb-server python-pymongo python-psutil python-tables
+RUN apt update && apt install -y \
+    build-essential \
+    cron \
+    dcmtk \
+    mongodb-server \
+    python3.6 \
+    python3.6-dev \
+    python3-pip \
+    python-psutil \
+    python-pymongo \
+    python-tables \
+    && apt clean && rm -rf /var/lib/apt/lists/*
 
 # Copy files
 ADD ./requirements.txt /requirements.txt
