@@ -40,6 +40,8 @@ def import_module(unique_name, path, module_name):
         try:
             module = imp.load_module(unique_name, fp, pathname, description)
         except:
+            import traceback
+            traceback.print_exc()
             print('Cannot open script {0}, check if it contains syntax errors ')
         finally:
             # Since we may exit via an exception, close fp explicitly.
