@@ -316,6 +316,26 @@ class Project(object):
             process = self.process(cursor['id'])
             print(process)
 
+    def get_process_status(self, arg=None, limit=40, script=None, sort=pymongo.DESCENDING):
+        if isinstance(arg, int):
+            limit = arg
+        elif isinstance(arg, str):
+            script = arg
+
+        if script != None:
+            results = self.db_processes.find({'script': script}, limit=limit).sort(
+                'id', pymongo.DESCENDING)
+        else:
+            results = self.db_processes.find(limit=limit).sort(
+                'id', pymongo.DESCENDING)
+
+        processes = list()
+        for cursor in results:
+            process = self.process(cursor['id'])
+            processes.append(process)
+        return processes
+
+
     @property
     def processes_pending(self):
         dbproc = self.db_processes.find_one({'status': 'pending'})
