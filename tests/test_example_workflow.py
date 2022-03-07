@@ -10,10 +10,12 @@ import shutil
 
 import workflow_manager as wm
 
+root_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+test_dir = root_dir + "/tests"
 pytest.project_name = "project_temp"
-pytest.project_root = './tmp/project_temp'
+pytest.project_root = root_dir + '/tests/tmp/project_temp'
 pytest.conn = None
-test_dir = os.path.dirname(os.path.realpath(__file__))
+
 
 def delete_project_from_db(project_name, db_connection):
     if project_name in db_connection.list_database_names():
