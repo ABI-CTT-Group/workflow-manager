@@ -53,8 +53,10 @@ def create_project():
 def run_project():
     P = wm.Project(pytest.project_name)
     script = P.script('pretend_import')
-    script_input_arguments = {'path': test_dir + '/../examples/data/pretend_data.txt',
-                              'send_dir': os.path.join(P.root_dir, 'results')}
+    data_path = root_dir + '/examples/data/pretend_data.txt'
+    result_dir = os.path.join(P.root_dir, 'results')
+    script_input_arguments = {'path': data_path,
+                              'send_dir': result_dir}
     script.run(script_input_arguments)
 
     print("Setting up and running the project...")
@@ -80,6 +82,7 @@ def test_pretend_import():
     """
 
     path = os.path.join(pytest.project_root, 'workspaces', '000001', 'pretend_data.txt')
+    print("Path: " + path)
 
     assert os.path.isfile(path)
 
