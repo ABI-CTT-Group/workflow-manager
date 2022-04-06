@@ -17,6 +17,7 @@ Welcome to the Physiome Workflow Manager (WM) documentation!
    container_based_deployment
    api
    testing
+   ci_cd
    future
    contributing_to_documentation
    contributors
