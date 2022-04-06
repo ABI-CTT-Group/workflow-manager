@@ -14,7 +14,6 @@ Welcome to the Physiome Workflow Manager (WM) documentation!
    installation
    workflow_components/index
    examples
-   container_based_deployment
    api
    testing
    ci_cd
