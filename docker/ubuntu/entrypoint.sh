@@ -43,4 +43,7 @@ if [[ "${MODE,,}" == "custom" ]]; then
   python3 ${RESOURCES}/project_setup.py ${PROJECT_NAME} ${PROJECT_ROOT} ${RESOURCES}
 fi
 
-
+# start cron service
+service cron start
+# keep container running
+tail -f /dev/null

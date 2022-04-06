@@ -40,6 +40,8 @@ def import_module(unique_name, path, module_name):
         try:
             module = imp.load_module(unique_name, fp, pathname, description)
         except:
+            import traceback
+            traceback.print_exc()
             print('Cannot open script {0}, check if it contains syntax errors ')
         finally:
             # Since we may exit via an exception, close fp explicitly.
@@ -313,6 +315,26 @@ class Project(object):
         for cursor in results:
             process = self.process(cursor['id'])
             print(process)
+
+    def get_process_status(self, arg=None, limit=40, script=None, sort=pymongo.DESCENDING):
+        if isinstance(arg, int):
+            limit = arg
+        elif isinstance(arg, str):
+            script = arg
+
+        if script != None:
+            results = self.db_processes.find({'script': script}, limit=limit).sort(
+                'id', pymongo.DESCENDING)
+        else:
+            results = self.db_processes.find(limit=limit).sort(
+                'id', pymongo.DESCENDING)
+
+        processes = list()
+        for cursor in results:
+            process = self.process(cursor['id'])
+            processes.append(process)
+        return processes
+
 
     @property
     def processes_pending(self):

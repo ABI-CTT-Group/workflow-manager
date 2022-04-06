@@ -7,8 +7,9 @@ import shutil
 
 import workflow_manager as wm
 
+root_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 pytest.project_name = "project_temp"
-pytest.project_root = './tmp/project_temp'
+pytest.project_root = root_dir + '/tests/tmp/project_temp'
 pytest.conn = None
 
 

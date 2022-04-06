@@ -1,7 +1,6 @@
 import sys
 import os
 import workflow_manager
-from workflow_manager.project import start_process_monitor
 
 if __name__ == '__main__':
     if len(sys.argv) < 0:
@@ -13,5 +12,3 @@ if __name__ == '__main__':
     script = P.script('pretend_import')
     script_input_arguments = {'path': path, 'send_dir': os.getenv('RESULTS')}
     script.run(script_input_arguments)
-
-    start_process_monitor(project_name, 999, 3, 8)

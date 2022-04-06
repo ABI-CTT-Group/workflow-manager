@@ -33,15 +33,15 @@ Pipelines vs’ Broadcast/Listeners
 
 The current method for processing a pipeline is to create a job with a
 list of processes that get queued. Maybe a better and more flexible method
-is to create a broadcast/listener system. In this case, you would register 
+is to create a broadcast/listener system. In this case, you would register
 your scripts with a unique label, which has to be agreed amongst users.  
 A script will also have a list of scripts it listens to.
 
-For example, the ‘fit breast mesh’ script might listen for when ‘segment 
-breast MRI’ script is run and when it does, it would execute itself based 
-on the data produced by the segment script. Another example, is for 
-creating a PCA mesh of the breast, the ‘generate breast PCA mesh’ 
-scripts might listen for executions by the ‘fit breast mesh’ and if 
+For example, the ‘fit breast mesh’ script might listen for when ‘segment
+breast MRI’ script is run and when it does, it would execute itself based
+on the data produced by the segment script. Another example, is for
+creating a PCA mesh of the breast, the ‘generate breast PCA mesh’
+scripts might listen for executions by the ‘fit breast mesh’ and if
 the fit was successful and its error was below a threshold, it would
 add the breast mesh to the PCA mesh, and even version the PCA mesh.
 This broadcast/listen system can also be used to notify users via
@@ -59,10 +59,10 @@ DONE
 Version Control of Scripts
 --------------------------
 
-It should be possible to register a repository with a script where a 
+It should be possible to register a repository with a script where a
 project can be commanded to pull the latest version from the repository.
 In this case WM can automatically record the version of scripts data
-was processed or generated with. 
+was processed or generated with.
 
 Furthermore, it might be possible to modify a script in a version control
 system and ask a project to test the version against the data and report

@@ -1,17 +1,29 @@
 # Physiome workflow manager
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/physiome-workflows/workflow-manager/blob/main/LICENSE)
+[![Documentation Status](https://readthedocs.org/projects/physiome-workflow-manager/badge/?version=latest)](https://physiome-workflow-manager.readthedocs.io/en/latest/)
+[![Documentation Website](https://img.shields.io/website?down_color=red&down_message=down&up_color=brightgreen&up_message=up&url=https%3A%2F%2Fphysiome-workflow-manager.readthedocs.io%2Fen%2Flatest%2F)](https://physiome-workflow-manager.readthedocs.io/en/latest/)
+
+[![Docker](https://img.shields.io/docker/pulls/clin864/workflow-manager.svg)](https://hub.docker.com/r/clin864/workflow-manager)
+[![Image Size](https://img.shields.io/docker/image-size/clin864/workflow-manager/latest)](https://hub.docker.com/r/clin864/workflow-manager)
+
+[![Repo Size](https://img.shields.io/github/repo-size/physiome-workflows/workflow-manager)](https://github.com/physiome-workflows/workflow-manager)
+![Last Commit](https://img.shields.io/github/last-commit/physiome-workflows/workflow-manager)
+
+![Python 3](https://img.shields.io/badge/Python->=3.6-blue)
+
 An open-source software platform for creating and deploying Physiome-driven modelling workflows for research and clinical applications. It is a container based implemenation that provides infrastructure-agnostic software design that is intended to be hosted and executed entirely within research or hospital IT infrastructure.
 
 ## Dependencies
 
-Installing system dependencies
+### Installing system dependencies
 
 ```commandline
 apt update
 apt install -y dcmtk python3.6 build-essential python3.6-dev python3-pip mongodb-server python-pymongo python-psutil python-tables
 ```
 
-Installing Python dependencies
+### Installing Python dependencies
 
 ```commandline
 pip install -r requirements.txt
@@ -21,7 +33,7 @@ See requirements.txt for python dependencies.
 
 ## Accessing documentation
 
-The documentation is hosted on Readthedocs https://workflow-manager.readthedocs.io
+The documentation is hosted on Readthedocs https://physiome-workflow-manager.readthedocs.io
 
 ## Building documentation locally
 

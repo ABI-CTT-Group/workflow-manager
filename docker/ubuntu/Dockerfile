@@ -1,17 +1,30 @@
-ARG CODE_VERSION=18.04
-FROM ubuntu:${CODE_VERSION}
+ARG OS_VERSION=18.04
+FROM ubuntu:${OS_VERSION}
 
 USER root
 
 # Environment variables
-ENV MODULES_DIR /modules
-ENV SCRIPTS /scripts
-ENV PROJECT_NAME wm_project
-ENV PROJECT_ROOT /$PROJECT_NAME
-ENV DICOM_NODE /dcmtk/received
-ENV EXAMPLES /examples
-ENV RESULTS /results
-ENV RESOURCES /resources
+ARG PROJECT_NAME=wm_project
+ENV PROJECT_NAME=$PROJECT_NAME
+ENV PROJECT_ROOT=/$PROJECT_NAME
+
+ARG SCRIPTS=/scripts
+ENV SCRIPTS=$SCRIPTS
+
+ARG MODULES_DIR=/opt
+ENV MODULES_DIR=$MODULES_DIR
+
+ARG RESOURCES=/resources
+ENV RESOURCES=$RESOURCES
+
+ARG EXAMPLES=/examples
+ENV EXAMPLES=$EXAMPLES
+
+ARG RESULTS=/results
+ENV RESULTS=$RESULTS
+
+ARG DICOM_NODE=/dcmtk/received
+ENV DICOM_NODE=$DICOM_NODE
 
 # Make dirs
 RUN mkdir -p $MODULES_DIR
@@ -23,10 +36,18 @@ RUN mkdir -p $RESULTS
 RUN mkdir -p $RESOURCES
 
 # Install system packages
-RUN apt update
-RUN apt install -y dcmtk
-RUN apt install -y python3.6 build-essential python3.6-dev python3-pip
-RUN apt install -y mongodb-server python-pymongo python-psutil python-tables
+RUN apt update && apt install -y \
+    build-essential \
+    cron \
+    dcmtk \
+    mongodb-server \
+    python3.6 \
+    python3.6-dev \
+    python3-pip \
+    python-psutil \
+    python-pymongo \
+    python-tables \
+    && apt clean && rm -rf /var/lib/apt/lists/*
 
 # Copy files
 ADD ./requirements.txt /requirements.txt
@@ -41,6 +62,13 @@ RUN cp -R $MODULES_DIR/workflow_manager /usr/local/lib/python3.6/dist-packages
 # Install Python dependencies
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install --no-cache-dir -r /requirements.txt
+
+# Copy cron file to the cron.d directory
+COPY ./docker/ubuntu/workflow-manager-cron /etc/cron.d/workflow-manager-cron
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/cron.d/workflow-manager-cron
+# Apply cron job
+RUN crontab /etc/cron.d/workflow-manager-cron
 
 WORKDIR $DICOM_NODE
 CMD /bin/bash /entrypoint.sh

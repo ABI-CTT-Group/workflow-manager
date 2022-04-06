@@ -10,8 +10,10 @@ import shutil
 
 import workflow_manager as wm
 
+root_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+test_dir = root_dir + "/tests"
 pytest.project_name = "project_temp"
-pytest.project_root = './tmp/project_temp'
+pytest.project_root = root_dir + '/tests/tmp/project_temp'
 pytest.conn = None
 
 
@@ -39,20 +41,22 @@ def create_project():
 
     P = wm.create_project(pytest.project_name, root_dir=pytest.project_root)
 
-    P.import_script('../examples/scripts/pretend_import.py')
-    P.import_script('../examples/scripts/pretend_segment.py')
-    P.import_script('../examples/scripts/pretend_fit.py')
-    P.import_script('../examples/scripts/pretend_mechanics1.py')
-    P.import_script('../examples/scripts/pretend_mechanics2.py')
-    P.import_script('../examples/scripts/pretend_send.py')
+    P.import_script(test_dir + '/../examples/scripts/pretend_import.py')
+    P.import_script(test_dir + '/../examples/scripts/pretend_segment.py')
+    P.import_script(test_dir + '/../examples/scripts/pretend_fit.py')
+    P.import_script(test_dir + '/../examples/scripts/pretend_mechanics1.py')
+    P.import_script(test_dir + '/../examples/scripts/pretend_mechanics2.py')
+    P.import_script(test_dir + '/../examples/scripts/pretend_send.py')
 
 
 @pytest.fixture(scope="session", autouse=True)
 def run_project():
     P = wm.Project(pytest.project_name)
     script = P.script('pretend_import')
-    script_input_arguments = {'path': '../examples/data/pretend_data.txt',
-                              'send_dir': os.path.join(P.root_dir, 'results')}
+    data_path = root_dir + '/examples/data/pretend_data.txt'
+    result_dir = os.path.join(P.root_dir, 'results')
+    script_input_arguments = {'path': data_path,
+                              'send_dir': result_dir}
     script.run(script_input_arguments)
 
     print("Setting up and running the project...")
@@ -78,6 +82,7 @@ def test_pretend_import():
     """
 
     path = os.path.join(pytest.project_root, 'workspaces', '000001', 'pretend_data.txt')
+    print("Path: " + path)
 
     assert os.path.isfile(path)
 
